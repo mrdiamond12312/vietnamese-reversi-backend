@@ -66,7 +66,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
         },
-        
+
     },
 ]
 
@@ -124,6 +124,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-ALLOWED_HOSTS = ['.vercel.app']
-CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'https://vietnamese-reversi.netlify.app']
+ALLOWED_HOSTS = ['.vercel.app', 'localhost']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:3000',
+                        'https://vietnamese-reversi.netlify.app']
 CORS_ORIGIN_ALLOW_ALL = True

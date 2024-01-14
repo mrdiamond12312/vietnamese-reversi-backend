@@ -3,18 +3,19 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 # Create your views here.
+
+
 @csrf_exempt
 def getMove(request):
     from math import inf
     import copy
     # import sys
 
-    weight  = [[1, 1, 3, 1, 1],
+    weight = [[1, 1, 3, 1, 1],
               [1, 7, 4, 7, 1],
               [3, 4, 8, 4, 3],
               [1, 7, 4, 7, 1],
               [1, 1, 3, 1, 1]]
-
 
     starting_move = []
 
@@ -259,7 +260,6 @@ def getMove(request):
         for i in range(5):
             for j in range(5):
                 if (pFlag and prev_board[i][j] != 0 and board[i][j] == 0):
-                    print('Hi')
                     fromPos = tuple([i, j])
                     pFlag = False
                 if (mFlag and prev_board[i][j] == 0 and board[i][j] != 0):
@@ -299,7 +299,6 @@ def getMove(request):
         # return tuple(res)
 
     def minimax(board, trap, depth, player, maximizing, alpha, beta, max_depth):
-        print(isFinished(board), depth)
         if isFinished(board):
             return -300 + (max_depth - depth)*2, None
         if depth == 0:
@@ -332,7 +331,6 @@ def getMove(request):
                     if (beta <= alpha):
                         break
 
-                print(depth, bestVal, bestMove)
                 return bestVal, bestMove
         else:
             bestVal = inf
@@ -362,19 +360,18 @@ def getMove(request):
                     if (beta <= alpha):
                         break
 
-                print(depth, bestVal, bestMove)
                 return bestVal, bestMove
-    
+
     reqBody = json.loads(request.body)
 
     result_move = move(
-                    reqBody.get('prevBoard'),
-                    reqBody.get('board'),
-                    reqBody.get('player'), 15, 15
-                    )
+        reqBody.get('prevBoard'),
+        reqBody.get('board'),
+        reqBody.get('player'), 15, 15
+    )
 
     return JsonResponse({
-        'move': 
+        'move':
         {
             'from': {'row': result_move[0][0], 'col': result_move[0][1]},
             'to': {'row': result_move[1][0], 'col': result_move[1][1]},
