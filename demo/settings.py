@@ -124,6 +124,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-CSRF_TRUSTED_ORIGINS = ['http://localhost:3000',]
+ALLOWED_HOSTS = ['.vercel.app']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', 'https://vietnamese-reversi.netlify.app']
 CORS_ORIGIN_ALLOW_ALL = True
